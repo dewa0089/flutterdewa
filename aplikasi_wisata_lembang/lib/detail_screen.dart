@@ -14,13 +14,40 @@ class DetailScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Image.asset(place.imageAsset),
+            Stack(children: [
+              Image.asset(place.imageAsset, fit: BoxFit.cover),
+              SafeArea(
+                  child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    CircleAvatar(
+                      backgroundColor: Colors.grey,
+                      child: IconButton(
+                        icon: const Icon(
+                          Icons.arrow_back,
+                          color: Colors.blue,
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ),
+                    const FavoriteButton(
+                      
+                    )
+                  ],
+                ),
+              ))
+            ]),
             Container(
                 //Judul
                 margin: const EdgeInsets.only(top: 16.0),
                 child: Text(place.name,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(fontSize: 30.0, fontFamily: 'Staatliches'
+                    style: const TextStyle(
+                        fontSize: 30.0, fontFamily: 'Staatliches'
                         //fontWeight: FontWeight.bold,
                         ))),
             Container(
@@ -72,6 +99,32 @@ class DetailScreen extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class FavoriteButton extends StatefulWidget {
+  const FavoriteButton({super.key});
+
+  @override
+  FavoriteButtonState createState() => FavoriteButtonState();
+}
+
+class FavoriteButtonState extends State<FavoriteButton> {
+  bool isFavorite = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      icon: Icon(
+        isFavorite ? Icons.favorite : Icons.favorite_border,
+        color: Colors.red,
+      ),
+      onPressed: () {
+        setState(() {
+          isFavorite = !isFavorite;
+        });
+      },
     );
   }
 }
