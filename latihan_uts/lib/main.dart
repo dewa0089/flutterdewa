@@ -9,16 +9,19 @@ class MyApp extends StatelessWidget {
       title: 'First App',
       home: Scaffold(
           appBar: AppBar(
-            title: Text('Aplikasi Flutter Petanikode'),
+            title: Text('Aplikasi Sepatu'),
             backgroundColor: Colors.deepOrange,
           ),
           body: Column(children: <Widget>[
-            Image.network('https://www.petanikode.com/img/flutter/flutter.png'),
-            Text(
-              'Belajar Flutter untuk Pemula',
-              style: TextStyle(fontSize: 24, fontFamily: "Serif", height: 2.0),
-            ),
-            Text('oleh Petani Kode'),
+            Container(
+                //Judul
+                margin: const EdgeInsets.only(top: 16.0),
+                child: Text('Nike Air Jordan',
+                    textAlign: TextAlign.left,
+                    style: const TextStyle(
+                        fontSize: 30.0, fontFamily: 'Staatliches'
+                        //fontWeight: FontWeight.bold,
+                        ))),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
